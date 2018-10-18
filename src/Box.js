@@ -12,7 +12,7 @@ class Box extends Component {
 
   handleClick = () => {
     let { player, isActive } = this.state
-    if (isActive) {                         // only do stuff with active boxes
+    if (isActive && this.props.activeGame) {// only do stuff with active boxes
       if (this.props.count % 2 === 0) {
         player = 'X'                        // change player val to x
         this.props.onAllClicks(this.props.id, player)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Box from './Box'
+import Box from './Box';
+import Message from './Message';
 import './App.css';
 
 class Board extends Component {
@@ -10,20 +11,26 @@ class Board extends Component {
       board: ['', '', '', '', '', '', '', '', ''],
       winList: [[0,1,2], [3,4,5], [6,7,8],
                 [0,3,6], [1,4,7], [2,5,8],
-                [0,4,8], [2,4,6]]
+                [0,4,8], [2,4,6]],
+      activeGame: true
     }
   }
 
   handleAllClicks = (id, player) => {
     let { clickCount, board } = this.state
-    clickCount++
-    board[id] = player
-    this.setState({
-      clickCount: clickCount,
-      board: board
-    })
-    if (this.isWin() || this.isLoss()) {
-      this.handleGameOver(player)
+    if (this.state.activeGame) {
+      clickCount++
+      board[id] = player
+      this.setState({
+        clickCount: clickCount,
+        board: board
+      })
+      if (this.isWin() || this.isLoss()) {
+        this.handleGameOver()
+        this.setState({
+          activeGame: false
+        })
+      }
     }
   }
 
@@ -45,18 +52,28 @@ class Board extends Component {
   }
 
   isLoss = () => {
-    if (this.state.clickCount > 7) {
+    if (this.state.clickCount >= 9) {
       return true
     } else {
       return false
     }
   }
 
-  handleGameOver = (player) => {
+  handleGameOver = () => {
     if (this.isWin()) {
-      alert(`Game over, ${player} wins!`)
+      return `Winner: `
+    } else if (this.isLoss()) {
+      return `Game over, losers`
     } else {
-      alert(`Game over, losers`)
+      return ''
+    }
+  }
+
+  playerMessage = () => {
+    if (this.state.clickCount % 2 === 0) {
+      return `X`
+    } else {
+      return `O`
     }
   }
 
@@ -64,12 +81,21 @@ class Board extends Component {
     let { board } = this.state
     let boxes = board.map((box, index) => {
       return (
-        <Box contents={box} id={index} onAllClicks={this.handleAllClicks} count={this.state.clickCount} />
+        <Box  contents={box}
+              id={index}
+              onAllClicks={this.handleAllClicks}
+              count={this.state.clickCount}
+              sendPlayer={this.playerMessage}
+              activeGame={this.state.activeGame}
+        />
       )
     })
     return (
       <div className="Board">
         {boxes}
+        <Message  player={this.playerMessage()}
+                  endGameMessage={this.handleGameOver()}
+        />
       </div>
     );
   }

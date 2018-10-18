@@ -16,6 +16,8 @@ class Board extends Component {
     }
   }
 
+  // handleAllClicks() is called from Box.js, which passes id(num) and player state(str)
+  // does not return anything, just setState or setState and call handleGameOver
   handleAllClicks = (id, player) => {
     let { clickCount, board } = this.state
     if (this.state.activeGame) {
@@ -25,6 +27,7 @@ class Board extends Component {
         clickCount: clickCount,
         board: board
       })
+      // to exit the game, deactivate game board
       if (this.isWin() || this.isLoss()) {
         this.handleGameOver()
         this.setState({
@@ -34,6 +37,7 @@ class Board extends Component {
     }
   }
 
+  // checks state, returns boolean
   isWin = () => {
     let { board, winList } = this.state
     let isWin = false
@@ -43,6 +47,7 @@ class Board extends Component {
           board[winList[i][0]] === board[winList[i][1]] &&
           board[winList[i][1]] === board[winList[i][2]]) {
         isWin = true
+        //break out of the loop when true
         return isWin
       } else {
         isWin = false
@@ -51,6 +56,7 @@ class Board extends Component {
     return isWin
   }
 
+  // checks state, returns boolean
   isLoss = () => {
     if (this.state.clickCount >= 9) {
       return true
@@ -59,6 +65,7 @@ class Board extends Component {
     }
   }
 
+  // called by Message component, returns string
   handleGameOver = () => {
     if (this.isWin()) {
       return `Winner: `
@@ -69,6 +76,7 @@ class Board extends Component {
     }
   }
 
+  // called by Message component, returns string
   playerMessage = () => {
     if (this.state.clickCount % 2 === 0) {
       return `X`

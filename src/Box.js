@@ -10,22 +10,24 @@ class Box extends Component {
     }
   }
 
+  // if the game and the particular square are active, set player val based on counter,
+  // call onAllClicks() in the parent, and setState
   handleClick = () => {
     let { player, isActive } = this.state
-    if (isActive && this.props.activeGame) {// only do stuff with active boxes
+    if (isActive && this.props.activeGame) {
       if (this.props.count % 2 === 0) {
-        player = 'X'                        // change player val to x
+        player = 'X'
         this.props.onAllClicks(this.props.id, player)
         this.setState({
           player: player,
-          isActive: false                   // deactivate box
+          isActive: false
         })
       } else {
-        player = 'O'                        // change player val to o
+        player = 'O'
         this.props.onAllClicks(this.props.id, player)
         this.setState({
           player: player,
-          isActive: false                   // deactivate box
+          isActive: false
         })
       }
     }

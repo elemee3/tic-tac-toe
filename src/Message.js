@@ -33,7 +33,7 @@ class Message extends Component {
         <p>{this.formatMessage()}</p>
         <button onClick={this.handleGameReset}>Reset Game</button>
         <br />
-        <button onClick={this.legendary}>Legandary Mode</button>
+        {/*<button onClick={this.legendary}>Legandary Mode</button>*/}
       </div>
     );
   }

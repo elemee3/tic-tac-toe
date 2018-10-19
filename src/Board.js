@@ -8,11 +8,12 @@ class Board extends Component {
     super(props)
     this.state = {
       clickCount: 0,
+      activeGame: true,
       board: ['', '', '', '', '', '', '', '', ''],
       winList: [[0,1,2], [3,4,5], [6,7,8],
                 [0,3,6], [1,4,7], [2,5,8],
                 [0,4,8], [2,4,6]],
-      activeGame: true
+      gameMode: 'regular'
     }
   }
 
@@ -85,12 +86,21 @@ class Board extends Component {
     }
   }
 
+  handleModeChange = () => {
+    if (this.state.gameMode === 'regular') {
+      console.log('switching to legendary mode')
+      this.setState({ gameMode: 'legendary' })
+    } else {
+      console.log('switching to regular mode')
+      this.setState({ gameMode: 'regular' })
+    }
+  }
+
   render() {
     let { board } = this.state
     let boxes = board.map((box, index) => {
       return (
-        <Box  contents={box}
-              id={index}
+        <Box  id={index}
               onAllClicks={this.handleAllClicks}
               count={this.state.clickCount}
               sendPlayer={this.playerMessage}
@@ -103,6 +113,7 @@ class Board extends Component {
         {boxes}
         <Message  player={this.playerMessage()}
                   endGameMessage={this.handleGameOver()}
+                  gameMode={this.handleModeChange}
         />
       </div>
     );

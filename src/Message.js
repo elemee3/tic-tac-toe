@@ -19,21 +19,10 @@ class Message extends Component {
     }
   }
 
-  handleGameReset = () => {
-    window.location.reload()
-  }
-
-  legendary = () => {
-    this.props.gameMode()
-  }
-
   render() {
     return (
       <div className="App">
         <p>{this.formatMessage()}</p>
-        <button onClick={this.handleGameReset}>Reset Game</button>
-        <br />
-        {/*<button onClick={this.legendary}>Legandary Mode</button>*/}
       </div>
     );
   }

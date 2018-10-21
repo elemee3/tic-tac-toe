@@ -12,8 +12,7 @@ class Board extends Component {
       board: ['', '', '', '', '', '', '', '', ''],
       winList: [[0,1,2], [3,4,5], [6,7,8],
                 [0,3,6], [1,4,7], [2,5,8],
-                [0,4,8], [2,4,6]],
-      gameMode: 'regular'
+                [0,4,8], [2,4,6]]
     }
   }
 
@@ -86,16 +85,6 @@ class Board extends Component {
     }
   }
 
-  handleModeChange = () => {
-    if (this.state.gameMode === 'regular') {
-      console.log('switching to legendary mode')
-      this.setState({ gameMode: 'legendary' })
-    } else {
-      console.log('switching to regular mode')
-      this.setState({ gameMode: 'regular' })
-    }
-  }
-
   render() {
     let { board } = this.state
     let boxes = board.map((box, index) => {
@@ -109,12 +98,13 @@ class Board extends Component {
       )
     })
     return (
-      <div className="Board">
-        {boxes}
-        <Message  player={this.playerMessage()}
-                  endGameMessage={this.handleGameOver()}
-                  gameMode={this.handleModeChange}
-        />
+      <div>
+        <div className="Board">
+          {boxes}
+          <Message  player={this.playerMessage()}
+                    endGameMessage={this.handleGameOver()}
+          />
+        </div>
       </div>
     );
   }

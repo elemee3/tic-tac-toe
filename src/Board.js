@@ -101,6 +101,7 @@ class Board extends Component {
       <div>
         <div className="Board">
           {boxes}
+          <br />
           <Message  player={this.playerMessage()}
                     endGameMessage={this.handleGameOver()}
           />

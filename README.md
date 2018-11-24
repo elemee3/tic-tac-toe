@@ -1,3 +1,19 @@
+## Tic-Tac-Toe
+
+A simple game of tic-tac-toe built from scratch in ReactJS. Players alternate turns, beginning with player 'X'. Click one box to play your turn. The game is over when a player gets 3 in a row, or no available squares are left. Try 'Legendary Mode' for an additional challenge!
+
+## To Play
+
+This game is currently hosted at http://tttsolo.herokuapp.com/ (Loads slowly!)
+
+## To Install Locally
+(Requires either Yarn or NPM)
+
+1. Clone repository onto your machine
+2. Open terminal at root of repository, run either 'yarn' or 'npm install' to install dependencies
+3. Run either 'yarn start' or 'npm start'
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

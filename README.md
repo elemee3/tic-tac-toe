@@ -7,14 +7,15 @@ A simple game of tic-tac-toe built from scratch in ReactJS. Players alternate tu
 This game is currently hosted at http://tttsolo.herokuapp.com/ (Loads slowly!)
 
 ## To Install Locally
-(Requires either Yarn or NPM)
+(Requires Yarn)
 
 1. Clone repository onto your machine
-2. Open terminal at root of repository, run either 'yarn' or 'npm install' to install dependencies
-3. Run either 'yarn start' or 'npm start'
+2. Open terminal at root of repository, run 'yarn' to install dependencies
+3. Run 'yarn start' to launch
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md).
